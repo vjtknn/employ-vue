@@ -2,29 +2,33 @@
   <div class="wrapper">
     <div class="jobs">
       <h1>Jobs</h1>
-      <label for="jobs"></label>
-      <input
-      id='jobs'
-      name='jobs'
-      v-model='jobsValue'
-      @input='handleInput'
-      />
+      <ul>
+        <li v-for="job in jobs">
+          {{ job.title }}
+        </li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'Jobs',
   data() {
     return {
-      jobsValue: '',
+      jobs: [],
     };
   },
-  methods: {
-    handleInput() {
-      console.log(this.jobsValue);
-    },
+  mounted() {
+    axios.get('http://localhost:3000/api/v1/jobs')
+      .then((response) => {
+        this.jobs = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
 };
 </script>
