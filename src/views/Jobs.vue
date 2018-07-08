@@ -2,11 +2,17 @@
   <div class="wrapper">
     <div class="jobs">
       <h1>Jobs</h1>
-      <ul>
-        <li v-for="job in jobs" :key='job.id'>
-          {{ job.title }}
-        </li>
-      </ul>
+      <div class="row">
+          <div class='col-md-6 col-lg-4' v-for="job in jobs" :key='job.id'>
+            <div class='card'>
+              <div class="card-body">
+                <div class="card-title">
+                  {{ job.title }}
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
     </div>
   </div>
 </template>
