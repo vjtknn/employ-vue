@@ -3,7 +3,7 @@
     <div class="jobs">
       <h1>Jobs</h1>
       <ul>
-        <li v-for="job in jobs">
+        <li v-for="job in jobs" :key='job.id'>
           {{ job.title }}
         </li>
       </ul>
